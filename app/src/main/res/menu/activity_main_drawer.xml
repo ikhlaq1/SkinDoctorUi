@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/NavigationTheme">
+
+    <group>
+        <item
+            android:id="@+id/nav_first_layout"
+            android:icon="@drawable/login"
+            android:title="Doctor's Login" />
+        <item
+            android:id="@+id/nav_second_layout"
+            android:icon="@drawable/case_login"
+            android:title="case login"
+            />
+        <item
+            android:id="@+id/our_doctors"
+            android:icon="@drawable/our_doctors"
+            android:title="Our Doctors" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/about_us"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/contact"
+            android:title="Contact Us" />
+    </group>
+
+</menu>
