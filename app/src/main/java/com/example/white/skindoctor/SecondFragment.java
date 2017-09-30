@@ -95,6 +95,11 @@ public class SecondFragment extends AppCompatActivity
             Intent intent = new Intent(this,ContactUs.class);
             startActivity(intent);
         }
+        else if (id == R.id.home) {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+
+        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

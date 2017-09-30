@@ -11,10 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public DrawerLayout drawer;
+    Button newCase,oldCase,consultNow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,36 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        newCase = (Button) findViewById(R.id.new_case_button);
+        oldCase = (Button) findViewById(R.id.oldCase_button);
+        consultNow = (Button) findViewById(R.id.consultNow);
+
+
+        oldCase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondFragment.class);
+                startActivity(intent);
+            }
+        });
+
+        newCase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,NewCase.class);
+                startActivity(intent);
+            }
+        });
+
+        consultNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,NewCase.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -95,6 +129,12 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
 
             }
+            else if (id == R.id.home) {
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
+
+            }
+
 
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

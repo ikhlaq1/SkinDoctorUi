@@ -31,7 +31,8 @@
             android:label="@string/title_activity_doctor_login" />
         <activity android:name=".OurDoctors" />
         <activity android:name=".aboutUs" />
-        <activity android:name=".ContactUs"></activity>
+        <activity android:name=".ContactUs" />
+        <activity android:name=".NewCase"></activity>
     </application>
 
 </manifest>

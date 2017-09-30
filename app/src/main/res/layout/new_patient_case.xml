@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <EditText
+        android:id="@+id/patient_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_corner"
+        android:ems="10"
+        android:hint="Age"
+        android:maxLength="2"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_below="@+id/age_radio_group"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/patient_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/patient_age"
+        android:layout_alignStart="@+id/patient_age"
+        android:layout_below="@+id/patient_age"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/round_corner"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textMultiLine"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/patient_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textSize="24sp"
+        android:layout_below="@+id/patient_name"
+        android:layout_alignLeft="@+id/patient_name"
+        android:layout_alignStart="@+id/patient_name" />
+
+    <EditText
+        android:id="@+id/patient_problem_description"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/round_corner"
+        android:ems="10"
+        android:hint="Problem Description"
+        android:inputType="textMultiLine"
+        android:textSize="24sp"
+        android:layout_below="@+id/patient_email"
+        android:layout_alignLeft="@+id/patient_email"
+        android:layout_alignStart="@+id/patient_email" />
+
+    <EditText
+        android:id="@+id/patient_contact_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/round_corner"
+        android:ems="10"
+        android:hint="Contact Number"
+        android:inputType="number"
+        android:maxLength="13"
+        android:textSize="24sp"
+        android:layout_below="@+id/patient_problem_description"
+        android:layout_alignLeft="@+id/patient_problem_description"
+        android:layout_alignStart="@+id/patient_problem_description" />
+
+
+    <TextView
+        android:id="@+id/duration_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="How long have you had your skin concerns?"
+        android:layout_marginTop="77dp"
+        android:paddingLeft="16dp"
+        android:textColor="#ffffff"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <RadioGroup
+        android:id="@+id/duration_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/duration_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:id="@+id/radio_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Days"
+            android:textColor="@drawable/radio_text" />
+
+        <RadioButton
+            android:id="@+id/radio_weeks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Weeks"
+            android:textColor="@drawable/radio_text" />
+
+        <RadioButton
+            android:id="@+id/radio_months"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Months"
+            android:textColor="@drawable/radio_text" />
+
+        <RadioButton
+            android:id="@+id/radio_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Years"
+            android:textColor="@drawable/radio_text" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/age_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/duration_radio_group"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Male"
+            android:textColor="@drawable/radio_text" />
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/rbt_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Female"
+            android:textColor="@drawable/radio_text" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_contact_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="Continue"
+        android:background="@drawable/primary_round"/>
+
+
+</RelativeLayout>
+
