@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/camera_image"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/camera_image"
+        android:layout_marginLeft="16dp"
+        android:layout_toStartOf="@+id/camera_image"
+        android:padding="24dp"
+        android:text="Take Photo From"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/camera_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        app:srcCompat="@drawable/camera_draw"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="54dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/upload_pic"
+        android:layout_marginEnd="47dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toStartOf="@+id/upload_pic"
+        android:padding="24dp"
+        android:text="Upload Photo"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/upload_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        app:srcCompat="@drawable/upload"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+
+</RelativeLayout>

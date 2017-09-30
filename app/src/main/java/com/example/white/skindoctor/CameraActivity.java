@@ -1,7 +1,9 @@
 package com.example.white.skindoctor;
 
 import android.content.Intent;
-import android.graphics.Paint;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,38 +15,66 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
-import static com.example.white.skindoctor.R.id.duration_text_view;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class NewCase extends AppCompatActivity
+public class CameraActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
+    ImageButton camera_init;
+    ImageButton upload_pic;
+    public static final int REQUEST_TAKE_PHOTO=0;
+    public static final int REQUEST_PIC_PHOTO=1;
 
-    TextView underline;
-    Button continueButton;
 
+    public static final int MEDIA_TYPE_IMAGE=4;
+    public static final int MEDIA_TYPE_VIDEO=5;
+
+    private Uri mMediaUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_case);
+        setContentView(R.layout.activity_camera);
 
-        continueButton = (Button) findViewById(R.id.continue_to_submit);
+        upload_pic = (ImageButton) findViewById(R.id.upload_pic);
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        upload_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewCase.this,CameraActivity.class);
-                startActivity(intent);
+                //code for uploading image goes here
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PIC_PHOTO);
             }
         });
 
+        camera_init= (ImageButton) findViewById(R.id.camera_image);
+        camera_init.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+
+
+                Log.d("Sucess","Sucess");
+                if (mMediaUri==null){
+                    Toast.makeText(CameraActivity.this,"error accesing your file system",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+                    startActivityForResult(intent, REQUEST_TAKE_PHOTO);
+                }
+            }
+        });
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        underline= (TextView) findViewById(duration_text_view);
-        underline.setPaintFlags(underline.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, myToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -58,8 +88,56 @@ public class NewCase extends AppCompatActivity
         navigationView1.setItemIconTintList(null);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (resultCode==RESULT_OK){
+            if (requestCode==REQUEST_PIC_PHOTO){
+                //upload to server code;
+            }
+        }
+    }
 
+    private Uri getOutputMediaFileUri(int mediaType) {
+        if (isExSDcardAvailable()){
+            File mediaStorageDir = getExternalFilesDir(Environment.DIRECTORY_DCIM);
+
+            String fileName = "";
+            String fileType = "";
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
+            if (mediaType == MEDIA_TYPE_IMAGE) {
+                fileName = "Case_"+ timeStamp;
+                fileType = ".jpg";
+            } else if(mediaType == MEDIA_TYPE_VIDEO) {
+                fileName = "VID_"+ timeStamp;
+                fileType = ".mp4";
+            } else {
+                return null;
+            }
+            File mediaFile;
+            try {
+                mediaFile=File.createTempFile(fileName,fileType,mediaStorageDir);
+                Log.d("Camera activity","File: "+Uri.fromFile(mediaFile));
+                return Uri.fromFile(mediaFile);
+            }
+            catch (IOException e){
+                Log.e("CameraAct","Error Creating file");
+            }
+
+        }
+        return null;
+    }
+
+    private boolean isExSDcardAvailable(){
+        String state= Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)){
+            return true;
+        }
+        else
+            return false;
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -114,16 +192,19 @@ public class NewCase extends AppCompatActivity
             Intent intent = new Intent(this,aboutUs.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_send) {
             Intent intent = new Intent(this,ContactUs.class);
             startActivity(intent);
+
         }
+
         else if (id == R.id.home) {
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
