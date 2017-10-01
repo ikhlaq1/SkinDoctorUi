@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 public class SplashMainActivity extends AppCompatActivity {
     private ImageView splashView;
-    private ImageView imageView;
+    private TextView splashTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_main);
         splashView = (ImageView) findViewById(R.id.Splash_Logo);
+        splashTextView=(TextView) findViewById(R.id.splash_Text) ;
+
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.mytransition);
         splashView.startAnimation(myAnimation);
 
@@ -23,7 +25,7 @@ public class SplashMainActivity extends AppCompatActivity {
         Thread timer = new Thread(){
             public void run(){
                 try {
-                    sleep(500);
+                    sleep(1500);
                 }
                 catch (InterruptedException e){
                     e.printStackTrace();

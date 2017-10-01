@@ -50,13 +50,13 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:layout_alignTop="@+id/email"
+        android:layout_alignTop="@+id/doctorEmail"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="50dp" />
 
     <AutoCompleteTextView
-        android:id="@+id/email"
+        android:id="@+id/doctorEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_email"
